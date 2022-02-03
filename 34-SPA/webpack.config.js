@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path');
 const HtmlWebpackPlugin = require(`html-webpack-plugin`);
 
 module.exports = {
@@ -10,11 +10,8 @@ module.exports = {
     path: path.resolve(__dirname, `dist`),
   },
   resolve: { extensions: [`.js`, `.json`, `.jpg`, `.css`, `.scss`] },
-  optimization: { splitChunks: { chunks: `all` } },
   devServer: { port: 8000 },
-  plugins: [
-    new HtmlWebpackPlugin({ template: `./index.html` })
-  ],
+  plugins: [new HtmlWebpackPlugin({ template: `./index.html` })],
   module: {
     rules: [
       {
@@ -23,7 +20,7 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
