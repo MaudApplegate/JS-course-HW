@@ -17,36 +17,34 @@ class NavigationBlock {
   render(container) {
     const el = document.createElement('div');
     this.renderNavigation(el);
+    const elBlock = document.createElement('div');
 
     switch (window.location.hash.slice(1)) {
       case Object.keys(APP_ROUTES)[0]:
-        this.renderAvrilBlock(el);
+        this.renderAvrilBlock(elBlock);
         break;
       case Object.keys(APP_ROUTES)[1]:
-        this.renderPizzaBlock(el);
+        this.renderPizzaBlock(elBlock);
         break;
       case Object.keys(APP_ROUTES)[2]:
-        this.renderUserDataBlock(el);
+        this.renderUserDataBlock(elBlock);
         break;
       default:
     }
     container.innerText = '';
-    container.appendChild(el);
+    container.append(el, elBlock);
   }
 
   renderAvrilBlock(container) {
     const el = new AvrilBlock(container);
-    return el;
   }
 
   renderPizzaBlock(container) {
     const el = new PizzaBlock(container);
-    return el;
   }
 
   renderUserDataBlock(container) {
     const el = new UserDataBlock(container);
-    return el;
   }
 
   renderNavigation(container) {
@@ -69,8 +67,8 @@ class NavigationBlock {
         return;
       }
     });
-
     container.appendChild(nav);
+    return container;
   }
 }
 

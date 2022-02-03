@@ -1,8 +1,17 @@
+import OrderViewBlock from './OrderView/index';
+import PictureBlock from './PicturePizza/index';
+import ListBlock from './ListBlock/index';
+import './style.scss';
+
 class PizzaBlock {
   constructor(container) {
-    const el = document.createElement('p');
-    el.innerHTML = 'PizzaBlock Block is run';
-    container.appendChild(el);
+    this.render(container);
+    container.id = 'pizza-app-wrapper';
+  }
+  render(container) {
+    const renderOrderView = new OrderViewBlock(container);
+    const renderPictureBlock = new PictureBlock(container);
+    const renderListBlock = new ListBlock(container);
   }
 }
 
