@@ -3,9 +3,12 @@ import { dataResponse } from './utils/commentsData';
 
 const API = createInstance();
 
-const getComments = async () => {
+export const getComments = async () => {
   const response = await API.get('/comments');
   return dataResponse(response);
 };
 
-export default getComments;
+export const getSingleComment = async (id) => {
+  const response = await API.get(`/comments/${id}`);
+  return response;
+};
