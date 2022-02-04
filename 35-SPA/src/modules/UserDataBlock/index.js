@@ -39,6 +39,7 @@ class UserDataBlock {
 
   renderButton(container, id) {
     const button = document.createElement('button');
+    button.classList.add('userButton');
     button.innerText = 'Single comment';
     button.id = id;
 
