@@ -2,8 +2,6 @@ import { getComments } from '../../services/api/api';
 import { getSingleComment } from '../../services/api/api';
 import './style.scss';
 
-const headers = ['id', 'name', 'email', 'text'];
-
 class UserDataBlock {
   constructor(container) {
     this.init(container);
@@ -21,6 +19,8 @@ class UserDataBlock {
   }
 
   renderList(container, data) {
+    const headers = ['id', 'name', 'email', 'text'];
+
     Object.keys(data).forEach((key) => {
       const div = document.createElement('div');
       div.classList.add('userData');

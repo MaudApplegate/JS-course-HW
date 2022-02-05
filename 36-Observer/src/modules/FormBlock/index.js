@@ -1,4 +1,5 @@
-import { createReview } from '../../../../../ClassWork/36Observer/src/services/api/reviewsApi';
+import { postReview } from '../../services/api/apiReview';
+import RenderListReview from './renderList';
 
 class FormBlock {
   constructor(container) {
@@ -6,6 +7,11 @@ class FormBlock {
   }
 
   render(container) {
+    this.renderForm(container);
+    this.renderList(container);
+  }
+
+  renderForm(container) {
     const form = document.createElement('form');
     form.classList.add('form');
 
@@ -27,6 +33,10 @@ class FormBlock {
     container.appendChild(form);
   }
 
+  renderList(container) {
+    const list = new RenderListReview(container);
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const inputs = [...e.target.elements];
@@ -37,7 +47,7 @@ class FormBlock {
       return acc;
     }, {});
     console.log(data);
-    // createReview(data); //* ревью отдельным js
+    postReview(data);
   };
 }
 
