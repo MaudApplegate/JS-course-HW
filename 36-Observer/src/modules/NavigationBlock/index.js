@@ -1,12 +1,14 @@
 import AvrilBlock from '../AvrilBlock/index.js';
 import PizzaBlock from '../PizzaBlock/index.js';
 import UserDataBlock from '../UserDataBlock/index.js';
+import FormBlock from '../FormBlock/index.js';
 import './style.scss';
 
 const APP_ROUTES = {
   AvrilBlock: 'Avril Lavign',
   PizzaBlock: 'Pizza Order',
   UserDataBlock: 'User Data',
+  FormBlock: 'User Form',
 };
 
 class NavigationBlock {
@@ -29,6 +31,9 @@ class NavigationBlock {
       case Object.keys(APP_ROUTES)[2]:
         this.renderUserDataBlock(elBlock);
         break;
+      case Object.keys(APP_ROUTES)[3]:
+        this.renderFormBlock(elBlock);
+        break;
       default:
     }
     container.innerText = '';
@@ -47,6 +52,9 @@ class NavigationBlock {
     const el = new UserDataBlock(container);
   }
 
+  renderFormBlock(container) {
+    const el = new FormBlock(container);
+  }
   renderNavigation(container) {
     const nav = document.createElement('nav');
 
