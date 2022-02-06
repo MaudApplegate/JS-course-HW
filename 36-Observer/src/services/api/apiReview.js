@@ -18,3 +18,10 @@ export const postReview = async (data) => {
 
   return response;
 };
+
+export const deleteReview = async (id) => {
+  const response = await API.delete(
+    'https://quiet-spire-94328.herokuapp.com/reviews/',
+    { data: { id } }
+  );
+};

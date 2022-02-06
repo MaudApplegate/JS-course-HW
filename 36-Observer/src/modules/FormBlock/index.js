@@ -1,5 +1,8 @@
 import { postReview } from '../../services/api/apiReview';
 import RenderListReview from './renderList';
+import './style.scss';
+
+export const renderWrapper = document.createElement('div');
 
 class FormBlock {
   constructor(container) {
@@ -8,7 +11,8 @@ class FormBlock {
 
   render(container) {
     this.renderForm(container);
-    this.renderList(container);
+    this.renderList(renderWrapper);
+    container.appendChild(renderWrapper);
   }
 
   renderForm(container) {
@@ -37,7 +41,7 @@ class FormBlock {
     const list = new RenderListReview(container);
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     const inputs = [...e.target.elements];
     const data = inputs.reduce((acc, input) => {
@@ -46,8 +50,9 @@ class FormBlock {
       }
       return acc;
     }, {});
-    console.log(data);
-    postReview(data);
+    await postReview(data);
+    renderWrapper.innerHTML = '';
+    new RenderListReview(renderWrapper);
   };
 }
 
