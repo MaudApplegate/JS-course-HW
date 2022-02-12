@@ -2,6 +2,7 @@ import React from 'react';
 import UserInput from './UserInput/index';
 import ValidError from './Validation/validError';
 import UserInfo from './UserInfo/index';
+import './style.css';
 
 class Form extends React.Component {
   state = {
@@ -46,53 +47,65 @@ class Form extends React.Component {
     } = this.state;
 
     return (
-      <form>
-        <header>ФОРМА</header>
-        <UserInput
-          name="name"
-          value={name}
-          onInputChange={this.onInputChange}
-        />
-        <ValidError
-          name="name"
-          value={name}
-          isValid={nameValid}
-          validGlobal={this.validCheck}
-        />
-        <UserInput
-          name="email"
-          value={email}
-          onInputChange={this.onInputChange}
-        />
-        <ValidError
-          name="email"
-          value={email}
-          isValid={emailValid}
-          validGlobal={this.validCheck}
-        />
-        <UserInput
-          name="password"
-          value={password}
-          onInputChange={this.onInputChange}
-        />
-        <ValidError
-          name="password"
-          value={password}
-          isValid={passwordValid}
-          validGlobal={this.validCheck}
-        />
+      <div id="wrapper">
+        {!isUserInfoIsOpened && (
+          <form>
+            <header>ФОРМА</header>
+            <UserInput
+              name="name"
+              value={name}
+              onInputChange={this.onInputChange}
+            />
+            <ValidError
+              name="name"
+              value={name}
+              isValid={nameValid}
+              validGlobal={this.validCheck}
+            />
+            <UserInput
+              name="email"
+              placeHolder="Email"
+              value={email}
+              onInputChange={this.onInputChange}
+            />
+            <ValidError
+              name="email"
+              value={email}
+              isValid={emailValid}
+              validGlobal={this.validCheck}
+            />
+            <UserInput
+              name="password"
+              placeHolder="Пароль"
+              value={password}
+              onInputChange={this.onInputChange}
+            />
+            <ValidError
+              name="password"
+              value={password}
+              isValid={passwordValid}
+              validGlobal={this.validCheck}
+            />
 
-        <button
-          id="btn"
-          disabled={nameValid && emailValid && passwordValid ? false : true}
-          onClick={this.handleSubmit}
-        >
-          Отправить
-        </button>
-        {isUserInfoIsOpened && (
-          <UserInfo username={name} useremail={email} userpassword={password} />
+            <button
+              id="btn"
+              disabled={nameValid && emailValid && passwordValid ? false : true}
+              onClick={this.handleSubmit}
+            >
+              Отправить
+            </button>
+          </form>
         )}
-      </form>
+        {isUserInfoIsOpened && (
+          <div id="userInfo">
+            <UserInfo
+              username={name}
+              useremail={email}
+              userpassword={password}
+            />
+          </div>
+        )}
+      </div>
     );
   }
 }

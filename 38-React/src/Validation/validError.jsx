@@ -20,7 +20,12 @@ class ValidError extends React.Component {
   };
 
   nameIsValid = (value) => {
-    return value.length > 3 && value.length < 30;
+    console.log(value[0]);
+    return (
+      value.length > 3 &&
+      value.length < 30 &&
+      value[0].toUpperCase() === value[0]
+    );
   };
 
   emailIsValid = (value) => {
@@ -42,7 +47,11 @@ class ValidError extends React.Component {
   }
 
   render() {
-    return <div>{!this.validCheck() && <p>Некорректные данные!</p>}</div>;
+    return (
+      <div className="divInput">
+        {!this.validCheck() && <p>Некорректные данные!</p>}
+      </div>
+    );
   }
 }
 
