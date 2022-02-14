@@ -64,7 +64,6 @@ class Form extends React.Component {
             />
             <UserInput
               name="email"
-              placeHolder="Email"
               value={email}
               onInputChange={this.onInputChange}
             />
@@ -76,7 +75,6 @@ class Form extends React.Component {
             />
             <UserInput
               name="password"
-              placeHolder="Пароль"
               value={password}
               onInputChange={this.onInputChange}
             />
