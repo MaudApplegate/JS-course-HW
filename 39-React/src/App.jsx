@@ -7,6 +7,28 @@ import {
   getHuskyImage,
   getMixDogImage,
 } from './services/api/api';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  border: 2px solid black;
+  width: 800px;
+  height: 700px;
+  margin: auto;
+  > div {
+    width: 100%;
+  }
+  > div > button {
+    font-weight: bold;
+    height: 60px;
+    background: yellow;
+    width: 20%;
+  }
+  > img {
+    height: 500px;
+    display: block;
+    margin: 50px auto;
+  }
+`;
 
 const imageDogList = [
   { id: 1, name: 'Akita', link: getAkitaImage },
@@ -33,12 +55,14 @@ function App() {
   };
 
   return (
-    <div>
-      {imageDogList.map(({ id, ...rest }) => (
-        <ButtonDog key={id} {...rest} setChange={setChange} />
-      ))}
+    <Container>
+      <div>
+        {imageDogList.map(({ id, ...rest }) => (
+          <ButtonDog key={id} {...rest} setChange={setChange} />
+        ))}
+      </div>
       <img src={image}></img>
-    </div>
+    </Container>
   );
 }
 
