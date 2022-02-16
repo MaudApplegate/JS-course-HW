@@ -8,3 +8,7 @@ nav > a {
   text-decoration: none;
   padding: 0 20px;
 }
+
+button {
+  margin: 0 20px;
+}
