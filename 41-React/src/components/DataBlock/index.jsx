@@ -17,7 +17,7 @@ const withData = (MyComponent) => {
 
 const DataBlock = ({ data }) => {
   return (
-    <div className="App">
+    <div>
       {data.map((item) => (
         <p key={item}>{item}</p>
       ))}
