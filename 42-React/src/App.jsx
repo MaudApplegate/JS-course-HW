@@ -1,12 +1,17 @@
-import { DataContextProvider } from './components/provider/DataContextProvider';
+import { DataContextProvider } from './provider/DataContextProvider';
 import ToDoListContext from './components/ToDoContext';
+import ToDoListReducer from './components/ToDoReducer';
+import { ReducerContextProvider } from './ducks/reducer/Reducer';
 
 function App() {
   return (
     <div>
-      <DataContextProvider>
+      {/* <DataContextProvider>
         <ToDoListContext />
-      </DataContextProvider>
+      </DataContextProvider> */}
+      <ReducerContextProvider>
+        <ToDoListReducer />
+      </ReducerContextProvider>
     </div>
   );
 }
