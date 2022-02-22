@@ -1,9 +1,18 @@
 import { useContext } from 'react';
-import { ReducerContext } from '../../ducks/reducer/Reducer';
+import {
+  ACTION_DELETE_TASK,
+  ReducerContext,
+} from '../../ducks/reducer/Reducer';
 
 const TextBlock = () => {
   const MyContext = useContext(ReducerContext);
-  const state = Object.values(MyContext.state);
+  const state = MyContext.state;
+
+  const handleClickDelete = (e) => {
+    MyContext.dispatch(ACTION_DELETE_TASK(e.target.attributes['idprop'].value));
+  };
+
+  const handleClickEdit = (e) => {};
 
   return (
     <ul>
@@ -11,6 +20,12 @@ const TextBlock = () => {
       {state.map((el) => (
         <li key={el.id}>
           <p>{el.text}</p>
+          <button idprop={el.id} onClick={handleClickDelete}>
+            Delete
+          </button>
+          <button idprop={el.id} onClick={handleClickEdit}>
+            Edit
+          </button>
         </li>
       ))}
     </ul>
