@@ -29,6 +29,8 @@ export const ACTION_EDIT_TASK = (payload) => {
   };
 };
 
+// state.find((el) => el.id == action.payload)
+
 const reducer = (state, action) => {
   switch (action.type) {
     case CREATE_TASK:
@@ -36,7 +38,14 @@ const reducer = (state, action) => {
     case DELETE_TASK:
       return state.filter((el) => el.id != action.payload);
     case EDIT_TASK:
-      return;
+      const result = state.map((el) => {
+        if (el.id == action.payload.id) {
+          return { id: el.id, text: action.payload.text };
+        } else {
+          return el;
+        }
+      });
+      return result;
     default:
       return state;
   }

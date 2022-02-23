@@ -7,7 +7,6 @@ import {
 const InputForm = () => {
   const MyContext = useContext(ReducerContext);
 
-  // const [inputData, setInputData] = useState({ id: 0, text: '' });
   const [id, setId] = useState(0);
   const [val, setVal] = useState('');
 
@@ -25,21 +24,6 @@ const InputForm = () => {
     );
     setVal('');
   };
-
-  // const handleChange = (e) => {
-  //   setInputData((prev) => ({ ...prev, text: e.target.value }));
-  // };
-
-  // const handleClick = () => {
-  //   setInputData((prev) => ({ ...prev, id: prev.id + 1 }));
-  //   MyContext.dispatch(
-  //     ACTION_CREATE_TASK({
-  //       id: inputData.id,
-  //       text: inputData.text,
-  //     })
-  //   );
-  //   setVal(() => '');
-  // };
 
   return (
     <div>
