@@ -29,8 +29,6 @@ export const ACTION_EDIT_TASK = (payload) => {
   };
 };
 
-// state.find((el) => el.id == action.payload)
-
 const reducer = (state, action) => {
   switch (action.type) {
     case CREATE_TASK:
