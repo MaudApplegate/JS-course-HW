@@ -4,7 +4,7 @@ const EDIT_DATA = 'EDIT_DATA';
 
 export const ACTION_SET_DATA = (payload) => ({
   type: 'SET_DATA',
-  payload
+  payload,
 });
 
 export const ACTION_DELETE_DATA = (payload) => ({
@@ -20,9 +20,9 @@ export const ACTION_EDIT_DATA = (payload) => ({
 export const dataReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_DATA:
-      return [ ...state, {id: action.id, text = action.text} ];
+      return { data: [...state.data, action.payload] };
     case DELETE_DATA:
-      return { ...state };
+      return { data: state.data.filter((el) => el.id !== action.payload.id) };
     case EDIT_DATA:
       return { ...state };
     default:
@@ -30,4 +30,4 @@ export const dataReducer = (state = initialState, action) => {
   }
 };
 
-export const initialState = [];
+export const initialState = { data: [] };

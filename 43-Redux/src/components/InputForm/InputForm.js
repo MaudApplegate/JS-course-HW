@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { ACTION_SET_DATA } from '../../ducks/inputData';
+import { ACTION_SET_DATA } from '../../ducks/inputDataReducer';
 
 const InputForm = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const InputForm = () => {
     <form onSubmit={handleSubmit}>
       <h3>Write Task</h3>
       <input name="task" />
-      <button>Submit</button>
+      <button>Add Task</button>
     </form>
   );
 };

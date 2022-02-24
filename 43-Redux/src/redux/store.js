@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { dataReducer, initialState } from '../ducks/inputData';
+import { dataReducer, initialState } from '../ducks/inputDataReducer';
 
 const devtoolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
 
