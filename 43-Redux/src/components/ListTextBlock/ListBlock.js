@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { ButtonDelete, ButtonEdit } from './buttons';
+import { ButtonDelete } from './buttons';
 
 const ListBlock = () => {
   const data = useSelector((state) => state.data);
@@ -11,7 +11,6 @@ const ListBlock = () => {
         <li key={data.id}>
           <p>{data.text}</p>
           <ButtonDelete idprop={data.id} />
-          <ButtonEdit idprop={data.id} />
         </li>
       ))}
     </ul>

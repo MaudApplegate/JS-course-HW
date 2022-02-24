@@ -13,6 +13,7 @@ const InputForm = () => {
         text: e.target.elements.task.value,
       })
     );
+    e.target.elements.task.value = '';
   };
 
   return (

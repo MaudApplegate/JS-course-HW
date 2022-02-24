@@ -14,18 +14,3 @@ export const ButtonDelete = ({ idprop }) => {
 
   return <button onClick={handleClick}>Delete</button>;
 };
-
-export const ButtonEdit = ({ idprop }) => {
-  const dispatch = useDispatch();
-
-  const handleClick = () => {};
-
-  return (
-    <>
-      <button onClick={handleClick}>Edit</button>{' '}
-      <div>
-        <input /> <button>Done</button>
-      </div>
-    </>
-  );
-};
