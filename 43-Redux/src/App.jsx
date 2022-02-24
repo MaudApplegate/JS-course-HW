@@ -1,5 +1,11 @@
+import ToDoList from './components/ToDoList';
+
 function App() {
-  return <div>Form</div>;
+  return (
+    <div>
+      <ToDoList />
+    </div>
+  );
 }
 
 export default App;
