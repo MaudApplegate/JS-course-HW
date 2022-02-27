@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { ACTION_SET_DATA } from '../../ducks/inputDataReducer';
+import { ACTION_SET_TASK } from '../../ducks/todo';
 
 const InputForm = () => {
   const dispatch = useDispatch();
@@ -8,9 +8,10 @@ const InputForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
-      ACTION_SET_DATA({
+      ACTION_SET_TASK({
         id: nextToDoId++,
         text: e.target.elements.task.value,
+        priority: null,
       })
     );
     e.target.elements.task.value = '';

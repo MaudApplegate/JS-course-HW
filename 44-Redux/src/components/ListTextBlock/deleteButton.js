@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux';
-import { ACTION_DELETE_DATA } from '../../ducks/inputDataReducer';
+import { ACTION_DELETE_TASK } from '../../ducks/todo';
 
 export const ButtonDelete = ({ idprop }) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
     dispatch(
-      ACTION_DELETE_DATA({
+      ACTION_DELETE_TASK({
         id: idprop,
       })
     );

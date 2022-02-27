@@ -1,8 +1,11 @@
-import { createStore } from 'redux';
-import { dataReducer, initialState } from '../ducks/inputDataReducer';
+import { combineReducers, createStore } from 'redux';
+import initialState from './initialState';
+import rootReducer from './rootReducer';
 
 const devtoolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
 
-const store = createStore(dataReducer, initialState, devtoolsExtension());
-
-export default store;
+export default createStore(
+  combineReducers({ ...rootReducer }),
+  initialState,
+  devtoolsExtension()
+);
