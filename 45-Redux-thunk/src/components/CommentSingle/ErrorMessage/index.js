@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { errorSelector } from '../../ducks/selectors';
+import { singleCommentErrorSelector as errorSelector } from '../../../ducks/selectors';
 
 const ErrorMessage = () => {
   const error = useSelector(errorSelector);

@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getCommentsAction } from '../ducks/actions';
-import { commentsSelector } from '../ducks/selectors';
+import { getCommentsAction } from '../../ducks/AllComments/actions';
+import { commentsSelector } from '../../ducks/selectors';
 import Loader from './Loader/index';
 import ErrorMessage from './ErrorMessage/index';
+import { Link } from 'react-router-dom';
 
 const CommentsList = (props) => {
   const { comments } = props;
@@ -20,7 +21,7 @@ const CommentsList = (props) => {
       {comments.map((item) => (
         <div key={item.id}>
           <li>{item.body}</li>
-          <button>More</button>
+          <Link to={`/${item.id}`}>More</Link>
         </div>
       ))}
     </div>
