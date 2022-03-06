@@ -1,7 +1,7 @@
-import { initialListState } from '../ducks/list/reducer';
+import { initialPokemonListState } from '../ducks/list/reducer';
 
 const initialState = {
-  list: initialListState,
+  list: initialPokemonListState,
 };
 
 export default initialState;

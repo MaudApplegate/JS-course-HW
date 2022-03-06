@@ -4,21 +4,25 @@ import {
   GET_LIST_FAILED,
 } from './actions';
 
-export const initialListState = {
-  pokemonList: [],
+export const initialPokemonListState = {
+  pokemons: [],
   error: null,
   isLoading: false,
 };
 
-export const listReducer = (state = initialListState, action) => {
+export const pokemonListReducer = (state = initialPokemonListState, action) => {
   switch (action.type) {
     case GET_LIST_REQUESTED:
-      return { ...state, isLoading: true };
+      return {
+        ...state,
+        isLoading: true,
+        error: initialPokemonListState.error,
+      };
     case GET_LIST_SUCCEED:
       console.log(action);
       return {
         ...state,
-        pokemonList: action.payload,
+        pokemons: action.payload,
         isLoading: false,
       };
     case GET_LIST_FAILED:

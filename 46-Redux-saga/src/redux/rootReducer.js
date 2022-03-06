@@ -1,5 +1,5 @@
-import { listReducer } from '../ducks/list/reducer';
+import { pokemonListReducer } from '../ducks/list/reducer';
 
-const rootReducer = { list: listReducer };
+const rootReducer = { list: pokemonListReducer };
 
 export default rootReducer;

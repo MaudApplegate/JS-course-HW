@@ -1,7 +1,7 @@
-export const FETCHED_DATA = 'FETCHED_DATA';
+export const GET_POKEMON_LIST = 'GET_POKEMON_LIST';
 
-export const fetchPokemonList = () => {
+export const ACTION_GET_POKEMON_LIST = () => {
   return {
-    type: 'FETCHED_DATA',
+    type: 'GET_POKEMON_LIST',
   };
 };
