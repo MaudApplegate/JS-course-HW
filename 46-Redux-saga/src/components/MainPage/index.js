@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 
 import PokemonImage from './pokemonImage';
 
+import { Link } from 'react-router-dom';
+
 const MainPage = ({ actionGetData, pokemonList }) => {
   useEffect(() => {
     actionGetData();
@@ -18,7 +20,14 @@ const MainPage = ({ actionGetData, pokemonList }) => {
           <li key={item.name}>
             {item.name}
             <PokemonImage url={item.url} />
-            <button>Details</button>
+
+            <Link
+              to={{
+                pathname: `/${item.url.slice(34, -1)}`,
+              }}
+            >
+              Details
+            </Link>
           </li>
         ))}
       </ul>

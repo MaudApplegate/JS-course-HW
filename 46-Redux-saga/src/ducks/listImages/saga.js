@@ -13,7 +13,6 @@ export function* getPokemonListSaga() {
     const data = yield call(() => {
       return getList();
     });
-
     yield put(ACTION_GET_LIST_SUCCEED(data));
   } catch (error) {
     yield put(ACTION_GET_LIST_FAILED(error));
