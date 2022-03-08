@@ -4,7 +4,7 @@ import { initialPokemonImagesState } from '../ducks/listImages/reducer';
 
 const initialState = {
   list: initialPokemonListState,
-  images: initialPokemonImagesState,
+  // images: initialPokemonImagesState,
   details: initialPokemonDetailsState,
 };
 

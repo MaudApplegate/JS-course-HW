@@ -3,44 +3,50 @@ import { dataListSelector } from '../../ducks/list/selector';
 import {
   ACTION_GET_POKEMON_LIST,
   ACTION_GET_POKEMON_IMAGES,
+  ACTION_INPUT_CHANGED,
 } from '../../redux/actions';
 import { useEffect } from 'react';
 
-import PokemonImage from './pokemonImage';
-
 import { Link } from 'react-router-dom';
-import { dataImageSelector } from '../../ducks/listImages/selector';
 
 const MainPage = ({
   actionGetData,
   pokemonList,
   actionGetImages,
-  imagesList,
+  actionInputChange,
 }) => {
   useEffect(() => {
     actionGetData();
+    // pokemonList.map((item) => actionGetImages(item.url));
+    // async function a() {
+    //   await actionGetData();
+    //   return pokemonList.map((item) => actionGetImages(item.url));
+    // }
+    // a();
   }, []);
 
   useEffect(() => {
     pokemonList.map((item) => actionGetImages(item.url));
-  }, [pokemonList]);
+  }, [actionGetData]);
+
+  // useEffect(() => {
+  //   pokemonList.map((item) => actionGetImages(item.url));
+  // }, [actionGetData]);
+
+  const handleChange = (e) => {
+    actionInputChange(e.target.value);
+  };
 
   return (
     <div>
       list
+      <input onChange={handleChange} />
       <ul>
         {pokemonList.map((item) => (
           <li key={item.name}>
             {item.name}
-            <PokemonImage url={item.url} />
-            {imagesList
-              .filter((q) => q.name == item.name)
-              .forEach((el) => (
-                <p>
-                  {el.image} <img src={el.image} />
-                </p>
-              ))}
-            <Link to={`/${item.url.slice(34, -1)}`}>Details</Link>
+            <img src={item.image} />
+            <Link to={`/${item.id}`}>Details</Link>
           </li>
         ))}
       </ul>
@@ -50,7 +56,6 @@ const MainPage = ({
 
 const mapStateToProps = (state) => ({
   pokemonList: dataListSelector(state),
-  imagesList: dataImageSelector(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -59,6 +64,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   actionGetImages: (url) => {
     dispatch(ACTION_GET_POKEMON_IMAGES(url));
+  },
+  actionInputChange: (value) => {
+    dispatch(ACTION_INPUT_CHANGED(value));
   },
 });
 

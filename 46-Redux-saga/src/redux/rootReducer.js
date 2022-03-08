@@ -4,7 +4,7 @@ import { pokemonImagesReducer } from '../ducks/listImages/reducer';
 
 const rootReducer = {
   list: pokemonListReducer,
-  images: pokemonImagesReducer,
+  // images: pokemonImagesReducer,
   details: pokemonDetailsReducer,
 };
 
