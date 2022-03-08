@@ -8,6 +8,7 @@ import {
 import { GET_POKEMON_IMAGES } from '../../redux/actions';
 
 export function* getPokemonImagesSaga(action) {
+  console.log(action);
   try {
     yield put(ACTION_GET_IMAGE_REQUESTED());
     const data = yield call(() => {
