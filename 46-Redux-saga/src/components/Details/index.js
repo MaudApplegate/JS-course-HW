@@ -4,20 +4,12 @@ import { useParams } from 'react-router-dom';
 import { dataDetailsSelector } from '../../ducks/details/selector';
 import { ACTION_GET_POKEMON_DETAILS } from '../../redux/actions';
 
-// const Details = () => {
-//   return <div>Detail</div>;
-// };
-
-// export default Details;
-
 const Details = ({ actionGetDetails, pokemonDetails }) => {
   const { id } = useParams();
 
   useEffect(() => {
     actionGetDetails(id);
   }, []);
-
-  console.log(pokemonDetails);
 
   return (
     <div>
