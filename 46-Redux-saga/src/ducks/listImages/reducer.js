@@ -4,14 +4,14 @@ import {
   GET_IMAGE_FAILED,
 } from './actions';
 
-export const initialPokemonImageState = {
+export const initialPokemonImagesState = {
   data: [],
   error: null,
   isLoading: false,
 };
 
-export const pokemonImageReducer = (
-  state = initialPokemonImageState,
+export const pokemonImagesReducer = (
+  state = initialPokemonImagesState,
   action
 ) => {
   switch (action.type) {
@@ -19,13 +19,12 @@ export const pokemonImageReducer = (
       return {
         ...state,
         isLoading: true,
-        error: initialPokemonImageState.error,
+        error: initialPokemonImagesState.error,
       };
     case GET_IMAGE_SUCCEED:
-      console.log(action);
       return {
         ...state,
-        data: action.payload,
+        data: [...state.data, action.payload],
         isLoading: false,
       };
     case GET_IMAGE_FAILED:

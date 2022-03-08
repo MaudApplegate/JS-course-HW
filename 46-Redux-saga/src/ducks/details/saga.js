@@ -13,7 +13,6 @@ export function* getPokemonDetailsSaga(action) {
     const data = yield call(() => {
       return getDetails(action.payload);
     });
-    console.log(data);
     yield put(ACTION_GET_DETAILS_SUCCEED(data));
   } catch (error) {
     yield put(ACTION_GET_DETAILS_FAILED(error));

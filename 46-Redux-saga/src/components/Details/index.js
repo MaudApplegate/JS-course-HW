@@ -6,7 +6,6 @@ import { ACTION_GET_POKEMON_DETAILS } from '../../redux/actions';
 
 const Details = ({ actionGetDetails, pokemonDetails }) => {
   const { id } = useParams();
-  console.log(id);
 
   useEffect(() => {
     actionGetDetails(id);
@@ -15,8 +14,8 @@ const Details = ({ actionGetDetails, pokemonDetails }) => {
   console.log(pokemonDetails);
 
   return (
-    <>
-      {pokemonDetails && (
+    <div>
+      {pokemonDetails.length !== 0 && (
         <div>
           <h3>Name</h3>
           <p>{pokemonDetails.name}</p>
@@ -31,12 +30,12 @@ const Details = ({ actionGetDetails, pokemonDetails }) => {
           <h3>Moves </h3>
           <ul>
             {pokemonDetails.moves.map((item) => (
-              <li>{item.move.name}</li>
+              <li key={item.id}>{item.move.name}</li>
             ))}
           </ul>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

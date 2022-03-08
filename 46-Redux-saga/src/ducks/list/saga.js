@@ -1,4 +1,4 @@
-import { getList } from '../../services/api/api';
+import { getImage, getList } from '../../services/api/api';
 import { put, takeEvery, call } from 'redux-saga/effects';
 import {
   ACTION_GET_LIST_FAILED,
@@ -13,7 +13,6 @@ export function* getPokemonListSaga() {
     const data = yield call(() => {
       return getList();
     });
-
     yield put(ACTION_GET_LIST_SUCCEED(data));
   } catch (error) {
     yield put(ACTION_GET_LIST_FAILED(error));

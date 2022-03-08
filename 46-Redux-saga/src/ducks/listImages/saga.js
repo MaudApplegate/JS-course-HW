@@ -1,24 +1,24 @@
-import { getList } from '../../services/api/api';
+import { getImage } from '../../services/api/api';
 import { put, takeEvery, call } from 'redux-saga/effects';
 import {
-  ACTION_GET_LIST_FAILED,
-  ACTION_GET_LIST_REQUESTED,
-  ACTION_GET_LIST_SUCCEED,
+  ACTION_GET_IMAGE_REQUESTED,
+  ACTION_GET_IMAGE_SUCCEED,
+  ACTION_GET_IMAGE_FAILED,
 } from './actions';
-import { GET_POKEMON_LIST } from '../../redux/actions';
+import { GET_POKEMON_IMAGES } from '../../redux/actions';
 
-export function* getPokemonListSaga() {
+export function* getPokemonImagesSaga(action) {
   try {
-    yield put(ACTION_GET_LIST_REQUESTED());
+    yield put(ACTION_GET_IMAGE_REQUESTED());
     const data = yield call(() => {
-      return getList();
+      return getImage(action.payload);
     });
-    yield put(ACTION_GET_LIST_SUCCEED(data));
+    yield put(ACTION_GET_IMAGE_SUCCEED(data));
   } catch (error) {
-    yield put(ACTION_GET_LIST_FAILED(error));
+    yield put(ACTION_GET_IMAGE_FAILED(error));
   }
 }
 
-export function* pokemonListSaga() {
-  yield takeEvery(GET_POKEMON_LIST, getPokemonListSaga);
+export function* pokemonImagesSaga() {
+  yield takeEvery(GET_POKEMON_IMAGES, getPokemonImagesSaga);
 }

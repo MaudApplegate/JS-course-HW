@@ -1,5 +1,5 @@
 import createInstance from '../instance';
-import { pokemonName, pokemonImage, pokemonDetails } from '../utils/utils';
+import { pokemonImage, pokemonDetails } from '../utils/utils';
 
 const API = createInstance();
 
