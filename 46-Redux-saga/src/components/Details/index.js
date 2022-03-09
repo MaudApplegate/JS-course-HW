@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { dataDetailsSelector } from '../../ducks/details/selector';
 import { ACTION_GET_POKEMON_DETAILS } from '../../redux/actions';
 import ErrorMessage from './ErrorMessage';
@@ -17,22 +18,22 @@ const Details = ({ actionGetDetails, pokemonDetails }) => {
     <div>
       <Loader />
       <ErrorMessage />
-      {pokemonDetails.length !== 0 && (
+      {Object.keys(pokemonDetails).length !== 0 && (
         <div>
           <h3>Name</h3>
           <p>{pokemonDetails.name}</p>
           <h3>Abilities</h3>
           {pokemonDetails.abilities.map((item) => (
-            <p>{item.ability.name}</p>
+            <p key={item.ability.name}>{item.ability.name}</p>
           ))}
           <h3>Types</h3>
           {pokemonDetails.types.map((item) => (
-            <p>{item.type.name}</p>
+            <p key={item.type.name}>{item.type.name}</p>
           ))}
           <h3>Moves </h3>
           <ul>
             {pokemonDetails.moves.map((item) => (
-              <li key={item.id}>{item.move.name}</li>
+              <li key={item.move.name}>{item.move.name}</li>
             ))}
           </ul>
         </div>
@@ -51,3 +52,14 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Details);
+
+Details.propTypes = {
+  actionGetDetails: PropTypes.func.isRequired,
+  pokemonDetails: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    abilities: PropTypes.array,
+    moves: PropTypes.array,
+    types: PropTypes.array,
+  }),
+};

@@ -5,7 +5,7 @@ import {
 } from './actions';
 
 export const initialPokemonDetailsState = {
-  data: [],
+  data: {},
   error: null,
   isLoading: false,
 };

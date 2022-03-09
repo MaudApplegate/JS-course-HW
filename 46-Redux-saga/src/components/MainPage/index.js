@@ -1,14 +1,17 @@
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import { dataListSelector } from '../../ducks/list/selector';
+
 import {
   ACTION_GET_POKEMON_LIST,
   ACTION_GET_POKEMON_IMAGES,
   ACTION_CHANGE_INPUT,
 } from '../../redux/actions';
-import { useEffect } from 'react';
+
 import Loader from './Loader';
 import ErrorMessage from './ErrorMessage';
+import PokemonList from './PokemonList';
 
 const MainPage = ({
   actionGetData,
@@ -33,15 +36,13 @@ const MainPage = ({
       <ErrorMessage />
       <ul>
         {pokemonList.map((item) => (
-          <div>
-            {item.isDisabled || (
-              <li key={item.name}>
-                {item.name}
-                <img src={item.image} />
-                <Link to={`/${item.id}`}>Details</Link>
-              </li>
-            )}
-          </div>
+          <PokemonList
+            name={item.name}
+            id={item.id}
+            image={item.image}
+            isDisabled={item.isDisabled}
+            key={item.name}
+          />
         ))}
       </ul>
     </div>
@@ -65,3 +66,10 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+
+MainPage.propTypes = {
+  actionGetData: PropTypes.func.isRequired,
+  actionGetImages: PropTypes.func.isRequired,
+  actionChangeInput: PropTypes.func.isRequired,
+  pokemonList: PropTypes.array.isRequired,
+};
