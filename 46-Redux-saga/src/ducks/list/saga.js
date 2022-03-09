@@ -7,6 +7,7 @@ import {
 } from './actions';
 
 import { GET_POKEMON_LIST } from '../../redux/actions';
+import { ACTION_FILTER_INPUT_LIST } from '../input/actions';
 
 export function* getPokemonListSaga() {
   try {
@@ -14,7 +15,10 @@ export function* getPokemonListSaga() {
     const data = yield call(() => {
       return getList();
     });
-    yield put(ACTION_GET_LIST_SUCCEED(data));
+    const fixedData = data.map((el) => {
+      return { ...el, isDisabled: false };
+    });
+    yield put(ACTION_GET_LIST_SUCCEED(fixedData));
   } catch (error) {
     yield put(ACTION_GET_LIST_FAILED(error));
   }

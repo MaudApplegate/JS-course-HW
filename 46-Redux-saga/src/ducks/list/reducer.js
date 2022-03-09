@@ -10,6 +10,8 @@ import {
   GET_IMAGE_FAILED,
 } from '../listImages/actions';
 
+import { FILTER_INPUT_LIST } from '../input/actions';
+
 export const initialPokemonListState = {
   data: [],
   error: null,
@@ -28,10 +30,25 @@ export const pokemonListReducer = (state = initialPokemonListState, action) => {
       return {
         ...state,
         data: action.payload,
+
+        // data: action.payload,
         isLoading: false,
       };
     case GET_LIST_FAILED:
       return { ...state, error: action.error.message, isLoading: false };
+
+    case FILTER_INPUT_LIST:
+      const { payload: value } = action;
+      return {
+        ...state,
+        data: state.data.map((el) => {
+          if (el.name.startsWith(value)) {
+            return { ...el, isDisabled: false };
+          } else {
+            return { ...el, isDisabled: true };
+          }
+        }),
+      };
 
     case GET_IMAGE_REQUESTED:
       return {
