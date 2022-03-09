@@ -7,7 +7,6 @@ import {
   ACTION_CHANGE_INPUT,
 } from '../../redux/actions';
 import { useEffect } from 'react';
-import { dataInputFilterSelector } from '../../ducks/input/selector';
 import Loader from './Loader';
 import ErrorMessage from './ErrorMessage';
 
@@ -16,7 +15,6 @@ const MainPage = ({
   pokemonList,
   actionGetImages,
   actionChangeInput,
-  filterList,
 }) => {
   useEffect(() => {
     actionGetData();
@@ -31,7 +29,6 @@ const MainPage = ({
     <div>
       list
       <input onChange={handleChange} />
-      {handleChange && <p>Hello</p>}
       <Loader />
       <ErrorMessage />
       <ul>
@@ -53,7 +50,6 @@ const MainPage = ({
 
 const mapStateToProps = (state) => ({
   pokemonList: dataListSelector(state),
-  filterList: dataInputFilterSelector(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

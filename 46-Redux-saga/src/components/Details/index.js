@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { dataDetailsSelector } from '../../ducks/details/selector';
 import { ACTION_GET_POKEMON_DETAILS } from '../../redux/actions';
+import ErrorMessage from './ErrorMessage';
+import Loader from './Loader';
 
 const Details = ({ actionGetDetails, pokemonDetails }) => {
   const { id } = useParams();
@@ -13,6 +15,8 @@ const Details = ({ actionGetDetails, pokemonDetails }) => {
 
   return (
     <div>
+      <Loader />
+      <ErrorMessage />
       {pokemonDetails.length !== 0 && (
         <div>
           <h3>Name</h3>

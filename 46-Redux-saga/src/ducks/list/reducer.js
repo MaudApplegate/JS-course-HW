@@ -30,8 +30,6 @@ export const pokemonListReducer = (state = initialPokemonListState, action) => {
       return {
         ...state,
         data: action.payload,
-
-        // data: action.payload,
         isLoading: false,
       };
     case GET_LIST_FAILED:

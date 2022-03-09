@@ -7,7 +7,6 @@ import {
 } from './actions';
 
 import { GET_POKEMON_LIST } from '../../redux/actions';
-import { ACTION_FILTER_INPUT_LIST } from '../input/actions';
 
 export function* getPokemonListSaga() {
   try {
