@@ -4,7 +4,7 @@ import { pokemonImage, pokemonDetails } from '../utils/utils';
 const API = createInstance();
 
 export const getList = async () => {
-  const response = await API.get('?offset=00&limit=20');
+  const response = await API.get('?offset=00&limit=100');
   return response.data.results;
 };
 

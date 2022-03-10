@@ -19,6 +19,6 @@ export function* getPokemonDetailsSaga(action) {
   }
 }
 
-export function* pokemonDetailsSaga() {
+export function* watcherPokemonDetails() {
   yield takeEvery(GET_POKEMON_DETAILS, getPokemonDetailsSaga);
 }

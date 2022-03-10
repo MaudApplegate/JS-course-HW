@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { dataListSelector } from '../../ducks/list/selector';
@@ -12,6 +13,32 @@ import {
 import Loader from './Loader';
 import ErrorMessage from './ErrorMessage';
 import PokemonList from './PokemonList';
+
+const H1Styled = styled.h1`
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 50px;
+`;
+
+const InputDivStyled = styled.div`
+  margin: auto;
+  width: 500px;
+  height: 100px;
+  label {
+    font-family: Helvetica;
+    font-size: 24px;
+  }
+  input {
+    width: 200px;
+    padding: 10px;
+    margin: 10px 20px;
+  }
+`;
+
+const DivStyled = styled.div`
+  width: 85%;
+  margin: auto;
+`;
 
 const MainPage = ({
   actionGetData,
@@ -30,11 +57,14 @@ const MainPage = ({
 
   return (
     <div>
-      list
-      <input onChange={handleChange} />
+      <H1Styled>POKEMONS</H1Styled>
+      <InputDivStyled>
+        <label>Find your pokemon</label>
+        <input onChange={handleChange} />
+      </InputDivStyled>
       <Loader />
       <ErrorMessage />
-      <ul>
+      <DivStyled>
         {pokemonList.map((item) => (
           <PokemonList
             name={item.name}
@@ -44,7 +74,7 @@ const MainPage = ({
             key={item.name}
           />
         ))}
-      </ul>
+      </DivStyled>
     </div>
   );
 };
@@ -73,3 +103,5 @@ MainPage.propTypes = {
   actionChangeInput: PropTypes.func.isRequired,
   pokemonList: PropTypes.array.isRequired,
 };
+
+export { H1Styled };
