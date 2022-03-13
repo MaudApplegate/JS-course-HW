@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { DataContext } from '../../../context/Context';
-import ButtonDelete from './button';
+import ButtonDelete from '../BtnDelete/button';
+import ButtonEdit from '../BtnEdit/button';
 
 const Tusks = () => {
   const data = useContext(DataContext);
@@ -13,6 +14,7 @@ const Tusks = () => {
             <div key={item.id}>
               <p>{item.task}</p>
               <ButtonDelete id={item.id} />
+              <ButtonEdit id={item.id} />
             </div>
           );
         })}
