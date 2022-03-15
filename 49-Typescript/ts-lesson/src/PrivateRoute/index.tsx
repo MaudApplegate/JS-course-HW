@@ -1,21 +1,26 @@
 import React, { useContext } from 'react';
-import { Route, Navigate, Routes } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import { AuthContext } from '../context/AuthContext';
+import { auth } from '../context/firebase';
 
 type Props = {
-  children: any;
+  children: React.ReactChild;
 };
 
 const PrivateRoute: React.FC<Props> = ({ children }) => {
   const currentUser = useContext(AuthContext);
-  console.log(children);
-  //   return currentUser ? children : <Navigate to="/signin" />;
 
-  return (
-    <Routes>
-      <Route path="/la" element={children} />{' '}
-    </Routes>
+  const logOut = async () => {
+    await auth.signOut();
+  };
+
+  return currentUser ? (
+    <>
+      {children} <button onClick={logOut}>Log Out</button>
+    </>
+  ) : (
+    <Navigate to="/signin" />
   );
 };
 

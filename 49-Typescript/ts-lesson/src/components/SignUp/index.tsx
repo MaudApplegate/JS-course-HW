@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { auth } from '../../context/firebase';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const SignUp: React.FC = () => {
   const [values, setValues] = useState({ email: '', password: '' });
@@ -11,9 +11,12 @@ export const SignUp: React.FC = () => {
     setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await auth.createUserWithEmailAndPassword(values.email, values.password);
+    navigate('/signin');
   };
 
   return (
@@ -22,7 +25,7 @@ export const SignUp: React.FC = () => {
       <input name="email" onChange={handleChange} value={values.email} />
       <input name="password" onChange={handleChange} value={values.password} />
       <button>Click</button>
-      <Link to="/signup">Sign Up</Link>
+      <Link to="/signin">Sign In</Link>
     </form>
   );
 };

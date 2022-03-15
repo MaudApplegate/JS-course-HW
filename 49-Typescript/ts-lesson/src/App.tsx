@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 
-import { SignIn } from './components/SignIn';
-import { SignUp } from './components/SignUp';
+import { SignIn } from './components/SignIn/index';
+import { SignUp } from './components/SignUp/index';
 
 import { Home } from './pages/Home';
 import { Info } from './pages/Info';
@@ -23,8 +23,8 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="/signin" element={SignIn} />
-        <Route path="/signup" element={SignUp} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route
           path="/info"
           element={

@@ -21,11 +21,11 @@ export const SignIn: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Sign Up</h2>
+      <h2>Sign In</h2>
       <input name="email" onChange={handleChange} value={values.email} />
       <input name="password" onChange={handleChange} value={values.password} />
       <button>Click</button>
-      <Link to="/signin">Sign In</Link>
+      <Link to="/signup">Sign Up</Link>
     </form>
   );
 };
